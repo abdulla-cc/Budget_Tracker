@@ -1,6 +1,6 @@
 # 💰 Budget Tracker
 
-> A personal allowance & spending tracker I built to fix my own budgeting problems.
+> A personal allowance & spending tracker built to fix a real budgeting problem.
 
 ![Budget Tracker](https://img.shields.io/badge/Built%20with-React%20%2B%20Vite-61DAFB?style=flat-square&logo=react)
 ![PWA](https://img.shields.io/badge/PWA-Installable-5A0FC8?style=flat-square&logo=pwa)
@@ -13,13 +13,13 @@
 
 Every month I receive my allowance and within two weeks it's gone. I never knew exactly where it went. I'd check my wallet and think *"I'm sure I had more than this"* — but I had no record, no breakdown, no way to trace it.
 
-I tried spreadsheets. Too tedious. I tried generic budgeting apps. They were either overly complicated, required an account, connected to a bank, or were built for Western currencies with no simple RM (Malaysian Ringgit) support.
+I tried spreadsheets. Too tedious. I tried generic budgeting apps. They were either overly complicated, required an account, connected to a bank, or were built for Western currencies without simple RM (Malaysian Ringgit) support.
 
 What I actually needed was something dead simple:
 
-**I receive RM733 → I split it into categories → every time I spend, I pick a category → the app shows me exactly what's left.**
+**You receive your monthly allowance → you split it into categories → every time you spend, you pick a category → the app shows you exactly what's left.**
 
-No bank syncing. No subscriptions. No unnecessary features. Just a clean tool that tells me *"you have RM255 left for groceries this month"* the moment I log a purchase.
+No bank syncing. No subscriptions. No unnecessary features. Just a clean tool that tells you *"you have RM X left for groceries this month"* the moment you log a purchase.
 
 So I built it myself.
 
@@ -28,17 +28,31 @@ So I built it myself.
 ## ✨ Features
 
 ### 💸 Allowance & Category Budgeting
-- Set your monthly allowance (default: **RM733**)
-- Distribute it into named spending categories
+- Set your monthly allowance (any amount you receive)
+- Distribute it into spending categories however you like
 - The app shows you exactly how much of each category remains at all times
+
+For example, if your allowance is **RM1,000** you could split it like:
+
+| Category | Budget |
+|---|---:|
+| Groceries | RM350.00 |
+| Eating Out | RM150.00 |
+| Transport | RM100.00 |
+| Bills | RM50.00 |
+| Emergency Fund | RM150.00 |
+| Savings | RM200.00 |
+| **Total Allocated** | **RM1,000.00** |
+
+You decide the categories and amounts — the app adapts to your life.
 
 ### ⚡ Instant Deduction
 The core feature: the moment you log a purchase, the app deducts it from the correct category. No manual math needed.
 
 ```
-Groceries budget:  RM280
-You spent:         RM35
-Remaining:         RM245  ← updates instantly
+Groceries budget:  RM350
+You spent:         RM45
+Remaining:         RM305  ← updates instantly
 ```
 
 ### 📊 Smart Dashboard
@@ -66,23 +80,6 @@ Remaining:         RM245  ← updates instantly
 
 ### 📱 Installable on Your Phone (PWA)
 Works as a Progressive Web App — install it on your phone's home screen from your browser. No App Store needed. Works completely offline after the first load.
-
----
-
-## 🗂️ Default Budget Setup
-
-| Category | Monthly Budget |
-|---|---:|
-| Groceries | RM280.00 |
-| Eating Out | RM120.00 |
-| Phone / Other Bills | RM30.00 |
-| Emergency Fund | RM100.00 |
-| Buffer / Fun / Savings | RM123.00 |
-| **Total Allocated** | **RM653.00** |
-| **Unallocated** | **RM80.00** |
-| **Monthly Allowance** | **RM733.00** |
-
-All categories and the allowance amount are fully editable.
 
 ---
 
@@ -177,14 +174,14 @@ This design means editing or deleting any transaction automatically corrects eve
 
 ```
 src/
-├── db.ts              # Dexie database schema & seed data
-├── utils.ts           # Money formatting, month helpers
-├── AppContext.tsx      # Selected month context
-├── App.tsx            # Router setup
+├── db.ts                 # Dexie database schema & seed data
+├── utils.ts              # Money formatting, month helpers
+├── AppContext.tsx         # Selected month context
+├── App.tsx               # Router setup
 ├── components/
-│   ├── Layout.tsx     # Bottom navigation shell
+│   ├── Layout.tsx        # Bottom navigation shell
 │   ├── ExpenseModal.tsx  # Add/Edit expense modal
-│   └── ui.tsx         # Card, ProgressBar components
+│   └── ui.tsx            # Card, ProgressBar components
 └── screens/
     ├── HomeScreen.tsx     # Dashboard
     ├── BudgetScreen.tsx   # Category budgets
@@ -211,4 +208,4 @@ MIT — free to use, modify, and share.
 
 ---
 
-*Built to solve a real problem. If you relate to losing track of your monthly allowance, this might help you too.*
+*Built to solve a real problem. If you've ever lost track of where your monthly allowance went, this app might help.*
